@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
+const cors =require("cors")
 const app = express();
+app.use(cors());
 const hbs = require("hbs");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -11,7 +13,7 @@ const Hirer = require("./models/hirers");
 const { json, text } = require("express");
 const { log } = require("console");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const static_path = path.join(__dirname, "../public" );
 const template_path = path.join(__dirname, "../templates/views" );
@@ -147,7 +149,6 @@ app.post("/login", async(req, res) =>{
 
 
 
-app.listen(port, () => 
-    console.log(`server is running at port no ${port}`))
-
-
+app.listen(port, () => {
+    console.log(`server is running at port no ${port}`);
+})
